@@ -1,0 +1,47 @@
+<div class="p-3">
+    <div class="card">
+        <p-toolbar styleClass="mb-4 bg-cyan-600 text-white">
+            <ng-template pTemplate="left">
+                <strong class="p-2">CIFRADO SIMÉTRICO | Aes</strong>
+            </ng-template>
+        </p-toolbar>
+        <p-tabView styleClass="tabview-custom">
+            <p-tabPanel header="AES TEXTO">
+                <ng-template pTemplate="header">
+                    <i class="pi pi-key"></i>&nbsp;&nbsp;
+                    <span>AES TEXTO</span>
+                </ng-template>
+                <app-basic-enc></app-basic-enc>
+            </p-tabPanel>
+
+            <p-tabPanel header="AES ARCHIVO">
+                <ng-template pTemplate="header">
+                    <i class="pi pi-key"></i>&nbsp;&nbsp;
+                    <span>AES ARCHIVO</span>
+                </ng-template>
+                <app-file-enc></app-file-enc>
+            </p-tabPanel> 
+
+           <!--  <p-tabPanel header="AUTENTICACIÓN">
+                <ng-template pTemplate="header">
+                    <i class="pi pi-sign-in"></i>&nbsp;&nbsp;
+                    <span>AUTENTICACIÓN</span>
+                </ng-template>
+                <app-auth></app-auth>
+            </p-tabPanel> -->
+
+        </p-tabView>
+    </div>
+    <div class="grid">
+        <div class="p-fluid col-12" *ngIf="error">
+            <p-message severity="error" text="Error al obtener los datos, intente de nuevo"></p-message>
+        </div>
+    </div>
+</div>
+
+
+<!-- MENSAJES -->
+<p-toast></p-toast>
+
+<!-- CONFIRMACION -->
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>

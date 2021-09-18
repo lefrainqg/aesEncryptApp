@@ -1,0 +1,34 @@
+<div class="grid">
+    <div class="col-12: md:col-4"></div>
+
+    <div class="col-12 md:col-4 grid mt-3 shadow-1" *ngIf="!isLogin">
+        <div class="col-12 grid m-0 p-0">
+            <div class="col-12 mt-2">
+                <div class="field">
+                    <label for="username">Usuario</label>
+                    <input pInputText [(ngModel)]="username" id="username" type="text" class="inputfield w-full">
+                    <small id="username-help">Ingrese el usuario de la cuenta</small>
+                </div>
+            </div>
+            <div class="col-12 grid">
+                <p-password [(ngModel)]="password" [toggleMask]="true"></p-password>
+                <small id="psw-help" class="col-12">Ingrese la contraseña</small>
+            </div>
+            <div class="col-12 text-right">
+                <button pButton type="button" label="INGRESAR" (click)="auth()"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-4 mt-3 grid shadow-1 text-green-500" *ngIf="isLogin && userSesion">
+        <h3>Bienvedido: {{userSesion.sesUser}}</h3>
+        <p>Ultimo acceso: {{userSesion.sesLastAccess | date:'yyyy-MM-dd - h:mm:ss a'}}</p>
+        <div class="col-12 text-right">
+            <button pButton type="button" label="Cerrar sesión" (click)="logout()"></button>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-4"></div>
+</div>
+
+<p-toast></p-toast>
